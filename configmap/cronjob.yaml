@@ -1,0 +1,36 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: pingpong
+  labels:
+    app: pingpong
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: pingpong
+        spec:
+          containers:
+          - name: pingpong
+            image: ubuntu:23.10
+            env:
+            - name: ENV_TEXT
+              value: hello
+            - name: CONFIGMAP_TEXT
+              valueFrom:
+                configMapKeyRef:
+                  name: config
+                  key: text
+            command:
+              - "sh"
+              - "-c"
+              - |
+                echo [`date`] $ENV_TEXT $CONFIGMAP_TEXT!
+                sleep 10
+                echo [`date`] $ENV_TEXT $CONFIGMAP_TEXT!
+                sleep 10
+                echo [`date`] $ENV_TEXT $CONFIGMAP_TEXT!
+          restartPolicy: OnFailure
