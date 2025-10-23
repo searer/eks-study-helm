@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cover-front
+  name: cover-api
   namespace: argocd
 spec:
   project: default
