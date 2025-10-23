@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: git@github.com:searer/eks-study-helm.git
+    repoURL: https://github.com/searer/eks-study-helm.git
     targetRevision: main
     path: apps/cover
   destination:
