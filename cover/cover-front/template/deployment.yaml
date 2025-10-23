@@ -1,0 +1,11 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cover-front
+  namespace: {{ .Values.namespace}}
+spec:
+  containers:
+  - name: cover-front
+    image: nginx
+    ports:
+    - containerPort: 8000

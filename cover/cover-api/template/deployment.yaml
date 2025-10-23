@@ -1,0 +1,11 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cover-api
+  namespace: {{ .Values.namespace }}
+spec:
+  containers:
+  - name: cover-api
+    image: nginx
+    ports:
+    - containerPort: 8081

@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cover-front
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: git@github.com:searer/eks-study-helm.git
+    targetRevision: main
+    path: cover/cover-front
+    helm:
+      valueFiles:
+        - values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: searer
+  syncPolicy: 
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
