@@ -1,0 +1,4 @@
+apiVersion: v2
+name: cover-front
+type: application
+version: 0.0.1
