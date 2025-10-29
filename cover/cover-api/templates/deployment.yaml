@@ -9,7 +9,7 @@ spec:
   selector:
     matchLabels:
       name: cover-api
-  templates:
+  template:
     metadata:
       labels:
         name: cover-api
