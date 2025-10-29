@@ -4,8 +4,18 @@ metadata:
   name: cover-api
   namespace: {{ .Values.namespace }}
 spec:
-  containers:
-  - name: cover-api
-    image: nginx
-    ports:
-    - containerPort: 8081
+  replicas: {{ .Values.replicaCount }}
+  revisionHistoryLimit: 2
+  selector:
+    matchLabes:
+      name: cover-api
+  template:
+    metadata:
+      labels:
+        name: cover-api
+    spec:
+      containers:
+      - name: cover-api
+        image: nginx
+        ports:
+        - containerPort: 8081

@@ -4,8 +4,18 @@ metadata:
   name: cover-front
   namespace: {{ .Values.namespace}}
 spec:
-  containers:
-  - name: cover-front
-    image: nginx
-    ports:
-    - containerPort: 8000
+  replicas: {{ .Values.replicaCount }}
+  revisionHistoryLimit: 2
+  selector:
+    matchLabes:
+      name: cover-front
+  template:
+    metadata:
+      labels:
+        name: cover-front
+    spec:
+      containers:
+      - name: cover-front
+        image: nginx
+        ports:
+        - containerPort: 8000
