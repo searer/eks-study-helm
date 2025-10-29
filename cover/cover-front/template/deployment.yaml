@@ -7,9 +7,9 @@ spec:
   replicas: {{ .Values.replicaCount }}
   revisionHistoryLimit: 2
   selector:
-    matchLabes:
+    matchLabels:
       name: cover-front
-  template:
+  templates:
     metadata:
       labels:
         name: cover-front
